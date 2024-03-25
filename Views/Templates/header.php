@@ -134,9 +134,11 @@
 
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label"> Real Insumos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a class="treeview-item" target="_blank" href="<?php echo base_url; ?>RInsumos"><i class="icon fa fa-file-pdf-o"></i> Listar</a></li>
+                    <li><a class="treeview-item"  href="<?php echo base_url; ?>RInsumos"><i class="icon fa fa-file-pdf-o"></i> Listar</a></li>
                 </ul>
             </li>
+            <li><a class="treeview-item" href="<?php echo base_url; ?>Kardex"><i class="icon fa fa-cogs"></i> Kardex</a></li>
+
         </ul>
     </aside>
     <main class="app-content">
