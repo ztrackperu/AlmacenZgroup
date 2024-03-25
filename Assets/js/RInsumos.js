@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         tblInsumos = $('#tblInsumos').DataTable({
         ajax: {
-            url: base_url + "Insumos/listar",
+            url: base_url + "RInsumos/listar",
             dataSrc: ''
         },
         columns: [{
