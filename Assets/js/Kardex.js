@@ -1,6 +1,6 @@
 
 $('.codigo_insumo').select2({
-    placeholder: 'Buscar por código',
+    placeholder: 'Buscar por código ...',
     minimumInputLength: 3,
     ajax: {
         url: base_url + 'Kardex/buscarInsumo',
