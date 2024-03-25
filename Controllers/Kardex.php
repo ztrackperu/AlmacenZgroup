@@ -30,6 +30,15 @@ class Kardex extends Controller
             die();
         }
     }
+    public function buscarArticulo()
+    {
+        if (isset($_GET['q'])) {
+            $valor = $_GET['q'];
+            $data = $this->model->buscarArticulo($valor);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            die();
+        }
+    }
 
     public function registrar()
     {

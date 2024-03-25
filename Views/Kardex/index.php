@@ -23,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="autor">Articulo</label><br>
-                            <select id="autor" class="form-control autor" name="autor" required style="width: 100%;">
+                            <select id="articulo_insumo" class="form-control articulo_insumo" name="articulo_insumo" required style="width: 100%;">
                             <!--<option id="selectAutor" value="0">Seleccione</option> -->
                             </select> 
 

@@ -28,5 +28,11 @@ class KardexModel extends Query
         $data = $this->selectAll($sql);
         return $data;
     }
+    public function buscarArticulo($valor)
+    {
+        $sql = "SELECT id, in_arti AS text FROM data_insumos WHERE in_arti LIKE '%" . $valor . "%' LIMIT 20";
+        $data = $this->selectAll($sql);
+        return $data;
+    }
 
 }
