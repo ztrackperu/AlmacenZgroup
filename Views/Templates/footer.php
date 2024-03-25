@@ -52,15 +52,16 @@
 <?php
 if (!empty($_GET['url'])) {
 
-    $script = $_GET['url'] . '.js';
+    $script =$_GET['url'].'.js';
     echo $script;
-    if (file_exists('assets/js/' . $script)) {
-        echo '<script src="'. base_url . 'assets/js/' . $script .'"></script>';
+	//$script = "Recetas.js";
+    if (file_exists('Assets/js/' . $script)) {
+        echo '<script src="'. base_url . 'Assets/js/' . $script .'"></script>';
     }else{
-        echo '<script src="'. base_url . 'assets/js/funciones.js"></script>';
+        echo '<script src="'. base_url . 'Assets/js/funciones.js"></script>';
     }
 }else{
-    echo '<script src="'. base_url . 'assets/js/funciones.js"></script>';
+    echo '<script src="'. base_url . 'Assets/js/funciones.js"></script>';
 } ?>
 </body>
 
