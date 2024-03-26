@@ -32,39 +32,25 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="editorial">Editorial</label><br>
-                            <select id="editorial" class="form-control editorial" name="editorial" required style="width: 100%;">
-                                
-                            </select>
+                            <label for="editorial">Part Number</label><br>
+                            <input id="part_number" class="form-control" type="text" name="part_number" placeholder="Part Number ..." required>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="materia">Materia</label><br>
-                            <select id="materia" class="form-control materia" name="materia" required style="width: 100%;">
-                                
-                            </select>
+                            <label for="materia">Marca</label><br>
+                            <input id="marca" class="form-control" type="text" name="marca" placeholder="marca ..." required>
+
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="cantidad">Cantidad</label>
                             <input id="cantidad" class="form-control" type="text" name="cantidad" placeholder="Cantidad" required>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="num_pagina">Cantidad de página</label>
-                            <input id="num_pagina" class="form-control" type="number" name="num_pagina" placeholder="Cantidad Página" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="anio_edicion">Año Edición</label>
-                            <input id="anio_edicion" class="form-control" type="date" name="anio_edicion" value="<?php echo date("Y-m-d"); ?>" required>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
+
+                    <div class="col-md-12">
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="descripcion">Descripción</label>
