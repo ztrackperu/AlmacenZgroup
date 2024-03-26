@@ -137,7 +137,12 @@
                     <li><a class="treeview-item"  href="<?php echo base_url; ?>RInsumos"><i class="icon fa fa-file-pdf-o"></i> Listar</a></li>
                 </ul>
             </li>
+            
             <li><a class="treeview-item" href="<?php echo base_url; ?>Kardex"><i class="icon fa fa-cogs"></i> Kardex</a></li>
+
+            <li><a class="treeview-item" href="<?php echo base_url; ?>Movimientos"><i class="icon fa fa-cogs"></i> Movimientos</a></li>
+
+            <li><a class="treeview-item" href="<?php echo base_url; ?>Stock"><i class="icon fa fa-cogs"></i> Stock</a></li>
 
         </ul>
     </aside>
