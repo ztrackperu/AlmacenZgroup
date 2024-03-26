@@ -27,17 +27,25 @@ class Movimientos extends Controller
         $data = $this->model->getMovimientos();
 
         for ($i = 0; $i < count($data); $i++) {
+           
+
             if ($data[$i]['estado'] == 1) {
                 $data[$i]['estado'] = '<span class="badge badge-success">Activo</span>';
+                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen'  ){
                 $data[$i]['acciones'] = '<div>
-                <button class="btn btn-primary" type="button" onclick="btnEditarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-pencil-square-o"></i></button>
                 <button class="btn btn-danger" type="button" onclick="btnEliminarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-trash-o"></i></button>
                 <div/>';
+                }else{$data[$i]['acciones'] = '';}
             } else {
-                $data[$i]['estado'] = '<span class="badge badge-danger">Eliminado</span>';
-                $data[$i]['acciones'] = '<div>
-                <button class="btn btn-success" type="button" onclick="btnReingresarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-reply-all"></i></button>
-                <div/>';
+                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen'){
+                    $data[$i]['estado'] = '<span class="badge badge-danger">Eliminado</span>';
+                    $data[$i]['acciones'] = '<div>
+                    <button class="btn btn-success" type="button" onclick="btnReingresarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-reply-all"></i></button>
+                    <div/>';
+                }else{
+                    {$data[$i]['acciones'] = '';}
+                }
+                
             }
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
