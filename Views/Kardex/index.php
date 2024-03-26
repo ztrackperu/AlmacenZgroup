@@ -46,7 +46,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="cantidad">Cantidad</label>
-                            <input id="cantidad" class="form-control" type="text" name="cantidad" placeholder="Cantidad" required>
+                            <input id="cantidad" class="form-control" type="text" name="cantidad" placeholder="Cantidad..." required>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="descripcion">Descripción</label>
-                                <textarea id="descripcion" class="form-control" name="descripcion" rows="2" placeholder="Descripción"></textarea>
+                                <textarea id="descripcion" class="form-control" name="descripcion" rows="2" placeholder="Descripción..."></textarea>
                             </div>
                         </div>
                     </div>

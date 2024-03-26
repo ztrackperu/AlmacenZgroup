@@ -24,7 +24,7 @@ class KardexModel extends Query
     }
     public function buscarInsumo($valor)
     {
-        $sql = "SELECT id, ind_codi AS text FROM data_insumos WHERE ind_codi LIKE '%" . $valor . "%' LIMIT 20";
+        $sql = "SELECT id, ind_codi  AS text FROM data_insumos WHERE ind_codi LIKE '%" . $valor . "%' LIMIT 20";
         $data = $this->selectAll($sql);
         return $data;
     }
@@ -32,6 +32,12 @@ class KardexModel extends Query
     {
         $sql = "SELECT id, in_arti AS text FROM data_insumos WHERE in_arti LIKE '%" . $valor . "%' LIMIT 20";
         $data = $this->selectAll($sql);
+        return $data;
+    }
+    public function infoT($valor)
+    {
+        $sql = "SELECT * FROM data_insumos WHERE id=" . $valor . "";
+        $data = $this->select($sql);
         return $data;
     }
 
