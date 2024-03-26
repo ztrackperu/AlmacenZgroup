@@ -40,6 +40,12 @@ class KardexModel extends Query
         $data = $this->select($sql);
         return $data;
     }
+    public function consultarCodigo($valor)
+    {
+        $sql = "SELECT in_arti,ind_codi FROM data_insumos WHERE id=" . $valor . "";
+        $data = $this->select($sql);
+        return $data;
+    }
     public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo)
     {
 

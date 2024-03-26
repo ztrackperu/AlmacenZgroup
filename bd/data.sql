@@ -32,3 +32,7 @@ CREATE TABLE stock (
     user_m int(2) DEFAULT 1,
     PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `inventarios`.`permisos` (`nombre`, `tipo`) VALUES ('Kardex', '23');
+INSERT INTO `inventarios`.`permisos` (`nombre`, `tipo`) VALUES ('Movimientos', '24');
+INSERT INTO `inventarios`.`permisos` (`nombre`, `tipo`) VALUES ('Stock', '25');

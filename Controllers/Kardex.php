@@ -53,8 +53,10 @@ class Kardex extends Controller
     public function registrar()
     {
         $id = "";
-        $codigoInsumo = strClean($_POST['codigo_insumo']);
-        $nombreInsumo = strClean($_POST['articulo_insumo']);
+        $codigoInsumo1 = strClean($_POST['codigo_insumo']);
+        $data1 = $this->model->consultarCodigo($codigoInsumo1);
+        $codigoInsumo = $data1['ind_codi'];
+        $nombreInsumo = $data1['in_arti'];
         $partNumber = strClean($_POST['part_number']);
         $marca = strClean($_POST['marca']);
         $cantidad = strClean($_POST['cantidad']);
