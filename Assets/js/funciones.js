@@ -1284,7 +1284,7 @@ if (document.getElementById("reportePrestamo")) {
                         datasets: [{
                             label: 'Libros',
                             data: cantidad,
-                            backgroundColor: ['#dc143c'],
+                            backgroundColor: ['#dc143c'], 
                         }],
                     },
                 });

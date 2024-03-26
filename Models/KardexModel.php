@@ -40,5 +40,19 @@ class KardexModel extends Query
         $data = $this->select($sql);
         return $data;
     }
+    public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo)
+    {
+
+            $query = "INSERT INTO movimientos(codigo, articulo, partNumber, marca, cantidad, condicion, extra1, imagen, user_c,user_m) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$usuario_activo) ;
+            $data = $this->save($query, $datos);
+            if ($data == 1) {
+                $res = "ok";
+            } else {
+                $res = "error";
+            }
+        
+        return $res;
+    }
 
 }

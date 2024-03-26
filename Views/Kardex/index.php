@@ -5,7 +5,7 @@
         <h1><i class="fa fa-dashboard"></i> Ingreso al inventario </h1>
     </div>
 </div>
-<button class="btn btn-primary mb-2" onclick="frmLibros()"><i class="fa fa-plus"></i></button>
+<!--<button class="btn btn-primary mb-2" onclick="frmLibros()"><i class="fa fa-plus"></i></button>!-->
 <div class="row">
     <div class="col-lg-12">
         <div class="tile">
@@ -14,7 +14,7 @@
                     <div class="col-md-6">
 
                         <div class="form-group">
-                            <label for="titulo">Codigo</label>
+                            <label for="titulo">Codigo *</label>
                             <input type="hidden" id="id" name="id">
                             <select id="codigo_insumo" class="form-control codigo_insumo" name="codigo_insumo" required style="width: 100%;">               
                             </select>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="autor">Articulo</label><br>
+                            <label for="autor">Articulo *</label><br>
                             <select id="articulo_insumo" class="form-control articulo_insumo" name="articulo_insumo" required style="width: 100%;">
                             <!--<option id="selectAutor" value="0">Seleccione</option> -->
                             </select> 
@@ -33,22 +33,36 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="editorial">Part Number</label><br>
-                            <input id="part_number" class="form-control" type="text" name="part_number" placeholder="Part Number ..." required>
+                            <input id="part_number" class="form-control" type="text" name="part_number" placeholder="Part Number ..." >
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="materia">Marca</label><br>
-                            <input id="marca" class="form-control" type="text" name="marca" placeholder="marca ..." required>
+                            <input id="marca" class="form-control" type="text" name="marca" placeholder="marca ..." >
 
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="cantidad">Cantidad</label>
-                            <input id="cantidad" class="form-control" type="text" name="cantidad" placeholder="Cantidad..." required>
+                            <label for="cantidad">Cantidad *</label>
+                            <input id="cantidad" class="form-control" type="number" name="cantidad" placeholder="Cantidad..." required>
                         </div>
                     </div>
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="titulo">Condicion *</label>
+                            <input type="hidden" id="id" name="id">
+                            <select id="condicion" class="form-control condicion" name="condicion" required style="width: 100%;">
+                                <option value="OPERATIVO">OPERATIVO</option>
+                                <option value="INOPERATIVO">INOPERATIVO</option>
+                                <option value="POR REVISAR">POR REVISAR</option>
+                            
+                                           
+                            </select>
+                        </div>
+                        </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
