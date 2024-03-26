@@ -30,6 +30,16 @@ class Kardex extends Controller
             die();
         }
     }
+    public function infoT($param)
+    {
+        $data =explode(',', $param);
+        //var_dump($data);
+        //echo $data[0];
+        $consulta = $this->model->infoT($data[0]);
+        echo json_encode($consulta, JSON_UNESCAPED_UNICODE);
+        die();
+
+    }
     public function buscarArticulo()
     {
         if (isset($_GET['q'])) {
@@ -42,39 +52,29 @@ class Kardex extends Controller
 
     public function registrar()
     {
-        $codigoInsumo = strClean($_POST['codigoInsumo']);
-        $nombreInsumo = strClean($_POST['nombreInsumo']);
-        $categoria = strClean($_POST['categoria']);
-        $marcaInsumo = strClean($_POST['marcaInsumo']);
-        $almacen = strClean($_POST['almacen']);
-        $descripcionInsumo = strClean($_POST['descripcionInsumo']);
-
-        $partNumber1 = strClean($_POST['partNumber1']);
-        $partNumber2 = strClean($_POST['partNumber2']);
-        $partNumber3 = strClean($_POST['partNumber3']);
-        $partNumber4 = strClean($_POST['partNumber4']);
-
-        $rack = strClean($_POST['rack']);
-        $anaquel = strClean($_POST['anaquel']);
-        $piso = strClean($_POST['piso']);
-        $sector = strClean($_POST['sector']);
-
-        //identificacion de usuario que crea o modifica el insumo
-        $usuario_activo = $_SESSION['id_usuario'];
-
-        $id = strClean($_POST['id']);
-        // temas de la imagen 
+        $id = "";
+        $codigoInsumo = strClean($_POST['codigo_insumo']);
+        $nombreInsumo = strClean($_POST['articulo_insumo']);
+        $partNumber = strClean($_POST['part_number']);
+        $marca = strClean($_POST['marca']);
+        $cantidad = strClean($_POST['cantidad']);
+        $condicion = strClean($_POST['condicion']);
+        $descripcion = strClean($_POST['descripcion']);
+        //$imagen = strClean($_POST['imagen']);
         $img = $_FILES['imagen'];
-        $name = $img['name'];
+        $imagen = $img['name'];
+        $usuario_activo = $_SESSION['id_usuario'];
         $fecha = date("YmdHis");
         $tmpName = $img['tmp_name'];
-        if (empty($codigoInsumo) || empty($nombreInsumo) || empty($categoria) || empty($almacen) ) {
-            $msg = array('msg' => 'Todo los campos * son requeridos', 'icono' => 'warning');
+
+       // $mes =  $codigoInsumo." , ".$nombreInsumo." , ".$partNumber." , ".$marca.",".$cantidad." ,". $condicion." , ".$descripcion.",".$imagen;
+        if (empty($codigoInsumo) || empty($nombreInsumo) || empty($cantidad)  ) {
+            $msg = array('msg' => 'Todos los campos con * son requeridos', 'icono' => 'warning');
         } else {
-            if (!empty($name)) {
+            if (!empty($imagen)) {
                 //$extension = pathinfo($name, PATHINFO_EXTENSION);
                 $formatos_permitidos =  array('png', 'jpeg', 'jpg');
-                $extension = pathinfo($name, PATHINFO_EXTENSION);
+                $extension = pathinfo($imagen, PATHINFO_EXTENSION);
                 if (!in_array($extension, $formatos_permitidos)) {
                     $msg = array('msg' => 'Archivo no permitido', 'icono' => 'warning');
                 } else {
@@ -89,55 +89,22 @@ class Kardex extends Controller
                 $imgNombre = "logo.png";
             }
             if ($id == "") {
-                $data = $this->model->insertarInsumos($codigoInsumo, $nombreInsumo, $categoria, $marcaInsumo, $almacen, $descripcionInsumo,$partNumber1,$partNumber2,$partNumber3,$partNumber4, $rack, $anaquel, $piso, $sector , $imgNombre,$usuario_activo);
+                $data = $this->model->insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo);
                 if ($data == "ok") {
                     if (!empty($name)) {
-                        //registrar la imagen 
                         move_uploaded_file($tmpName, $destino);
                     }
-                    // guardar los datos en el historico de insumo
-                    $evento="CREADO";
-                    //consultar el id que acabamos de crear
-                    $id_consulta = $this->model->IdInsumo($nombreInsumo);
-                    $id=$id_consulta['id'];
-                    // insertamos el evento en tabla historica
-                    $data2 = $this->model->h_insumo($id,$codigoInsumo, $nombreInsumo, $categoria, $marcaInsumo, $almacen, $descripcionInsumo,$partNumber1,$partNumber2,$partNumber3,$partNumber4, $rack, $anaquel, $piso, $sector , $imgNombre,$usuario_activo,$evento );
-                    $msg = array('msg' => 'Insumo registrado', 'icono' => 'success');
+                    $msg = array('msg' => 'Movimiento registrado', 'icono' => 'success');
                 } else if ($data == "existe") {
-                    $msg = array('msg' => 'Codigo o nombre de insumo  ya existe', 'icono' => 'warning');
+                    $msg = array('msg' => 'Movimiento ya existe', 'icono' => 'warning');
                 } else {
                     $msg = array('msg' => 'Error al registrar', 'icono' => 'error');
                 }
-            } else {
-                $imgDelete = $this->model->editInsumo($id);
-                if ($imgDelete['imagen_insumo'] != 'logo.png') {
-                    // verificamos si existe si existe el archivo de la imagen 
-                    if (file_exists("Assets/img/insumos/" . $imgDelete['imagen_insumo'])) {
-                        unlink("Assets/img/insumos/" . $imgDelete['imagen_insumo']);
-                    }
-                }
-                //pedir datos para evitar duplicidad 
-                $duplicidad = $this->model->analizarInsumo($codigoInsumo,$nombreInsumo);
-                if($id!=$duplicidad['id']){
-                    $msg = array('msg' => 'Insumo Duplicado , verifique los datos', 'icono' => 'warning');
-                }else{
-                    $data = $this->model->actualizarInsumos($codigoInsumo, $nombreInsumo, $categoria, $marcaInsumo, $almacen, $descripcionInsumo,$partNumber1,$partNumber2,$partNumber3,$partNumber4, $rack, $anaquel, $piso, $sector , $imgNombre,$usuario_activo,$id);
-                    if ($data == "modificado") {
-                        if (!empty($name)) {
-                            move_uploaded_file($tmpName, $destino);
-                        }
-                        $evento="MODIFICADO";
-                        $data2 = $this->model->h_insumo($id,$codigoInsumo, $nombreInsumo, $categoria, $marcaInsumo, $almacen, $descripcionInsumo,$partNumber1,$partNumber2,$partNumber3,$partNumber4, $rack, $anaquel, $piso, $sector , $imgNombre,$usuario_activo,$evento );
-                        $msg = array('msg' => 'Insumo modificado', 'icono' => 'success');
-                    } else {
-                        $msg = array('msg' => 'Error al modificar', 'icono' => 'error');
-                    }
-
-                }
-            }
+            } 
         }
         echo json_encode($msg, JSON_UNESCAPED_UNICODE);
         die();
+
     }
 
 }
