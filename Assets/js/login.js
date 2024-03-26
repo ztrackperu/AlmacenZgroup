@@ -22,7 +22,7 @@ function frmLogin(e) {
                 const res = JSON.parse(this.responseText);
                 if (res.icono == "success") {
                     //window.location = base_url + "Configuracion/admin";
-                    window.location = base_url + "Principal";
+                    window.location = base_url + "Kardex";
 
                 } else {s
                     document.getElementById("alerta").classList.remove("d-none");
