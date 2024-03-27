@@ -75,7 +75,19 @@ document.addEventListener("DOMContentLoaded", function(){
                 'data': 'articulo'
             },
             {
+                'data':'partNumber'
+            },
+            {
+                'data':'serie'
+            },
+            {
                 'data':'marca'
+            },
+            {
+                'data':'medida'
+            },
+            {
+                'data':'familia'
             },
             {
                 'data':'condicion'
@@ -84,10 +96,13 @@ document.addEventListener("DOMContentLoaded", function(){
                 'data':'cantidad'
             },
             {
-                'data':'imagen'
+                'data':'extra1'
             },
             {
-                'data':'estado'
+                'data':'usuario'
+            },
+            {
+                'data':'created_at'
             },
             {
                 'data': 'acciones'

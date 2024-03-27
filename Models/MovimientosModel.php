@@ -19,7 +19,7 @@ class MovimientosModel extends Query
     {
         // si es 1 
         if($_SESSION['id_usuario']==1){
-            $sql = "SELECT id, codigo, articulo, partNumber, serie, marca, medida, familia, condicion, cantidad, extra1, user_c, created_at estado FROM movimientos";
+            $sql =  "SELECT * FROM movimientos AS m INNER JOIN usuarios AS u ON m.user_c = u.id;";
             $res = $this->selectAll($sql);
 
         }else{
@@ -31,7 +31,7 @@ class MovimientosModel extends Query
     }
     public function editMovimiento($id)
     {
-        $sql = "SELECT * FROM movimientos WHERE id = $id";
+        $sql = "SELECT id, codigo, descripcion, partNumber, serie, marca, medida, familia, condicion, cantidad, extra1, user_c, created_at, estado FROM movimientos WHERE id = $id";
         $res = $this->select($sql);
         return $res;
     }

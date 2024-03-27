@@ -43,12 +43,17 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Codigo</th>
-                                <th>Articulo</th>
+                                <th>Descripcion</th>
+                                <th>Part Number</th>
+                                <th>Serie</th>
                                 <th>Marca</th>
-                                <th>Condicion</th>
+                                <th>Unidad Medida</th>
+                                <th>Familia</th>
+                                <th>Condición</th>
                                 <th>Cantidad</th>
-                                <th>Imagen</th>
-                                <th>Estado</th>
+                                <th>Comentarios</th>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>

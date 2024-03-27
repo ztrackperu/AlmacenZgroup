@@ -19,7 +19,7 @@ class StockModel extends Query
     {
         // si es 1 
         if($_SESSION['id_usuario']==1){
-            $sql = "SELECT id, codigo, articulo, condicion, stock, estado FROM stock";
+            $sql = "SELECT id, codigo, articulo, partNumber, serie, marca, medida, familia, condicion, stock, estado FROM stock";
             $res = $this->selectAll($sql);
 
         }else{
