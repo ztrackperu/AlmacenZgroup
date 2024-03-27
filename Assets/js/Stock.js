@@ -75,14 +75,26 @@ document.addEventListener("DOMContentLoaded", function(){
                 'data': 'articulo'
             },
             {
+                'data':'partNumber'
+            },
+            {
+                'data':'serie'
+            },
+            {
+                'data':'marca'
+            },
+            {
+                'data':'medida'
+            },
+            {
+                'data':'familia'
+            },
+            {
                 'data':'condicion'
             },
             {
                 'data':'stock'
-            },
-            {
-                'data':'estado'
-            },
+            }
         ],
         language,
         dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
