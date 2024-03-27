@@ -24,7 +24,7 @@ function frmLogin(e) {
                     //window.location = base_url + "Configuracion/admin";
                     window.location = base_url + "Kardex";
 
-                } else {s
+                } else {
                     document.getElementById("alerta").classList.remove("d-none");
                     document.getElementById("alerta").innerHTML = res.msg;
                 }

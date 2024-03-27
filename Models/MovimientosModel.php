@@ -19,11 +19,11 @@ class MovimientosModel extends Query
     {
         // si es 1 
         if($_SESSION['id_usuario']==1){
-            $sql =  "SELECT * FROM movimientos AS m INNER JOIN usuarios AS u ON m.user_c = u.id;";
+            $sql =  "SELECT m.* , u.usuario FROM movimientos AS m INNER JOIN usuarios AS u ON m.user_c = u.id";
             $res = $this->selectAll($sql);
 
         }else{
-            $sql = "SELECT * FROM movimientos WHERE estado = 1 ";
+            $sql = "SELECT m.* , u.usuario FROM movimientos AS m INNER JOIN usuarios AS u ON m.user_c = u.id where m.estado = 1 ";
             $res = $this->selectAll($sql);
         }
 

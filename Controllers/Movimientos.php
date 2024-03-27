@@ -31,13 +31,13 @@ class Movimientos extends Controller
 
             if ($data[$i]['estado'] == 1) {
                 $data[$i]['estado'] = '<span class="badge badge-success">Activo</span>';
-                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen'  ){
+                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen' || $_SESSION['usuario'] == 'gloriaflores' ){
                 $data[$i]['acciones'] = '<div>
                 <button class="btn btn-danger" type="button" onclick="btnEliminarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-trash-o"></i></button>
                 <div/>';
                 }else{$data[$i]['acciones'] = '';}
             } else {
-                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen'){
+                if($_SESSION['usuario'] == 'admin' || $_SESSION['usuario'] == 'almacen' || $_SESSION['usuario'] == 'gloriaflores'){
                     $data[$i]['estado'] = '<span class="badge badge-danger">Eliminado</span>';
                     $data[$i]['acciones'] = '<div>
                     <button class="btn btn-success" type="button" onclick="btnReingresarMovimiento(' . $data[$i]['id'] . ');"><i class="fa fa-reply-all"></i></button>
