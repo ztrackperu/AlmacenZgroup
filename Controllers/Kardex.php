@@ -66,6 +66,9 @@ class Kardex extends Controller
         $cantidad = strClean($_POST['cantidad']);
         $condicion = strClean($_POST['condicion']);
         $descripcion = strClean($_POST['descripcion']);
+        $medida = strClean($_POST['medida']);
+        $familia = strClean($_POST['familia']);
+        $serie = strClean($_POST['serie']);
         //$imagen = strClean($_POST['imagen']);
         $img = $_FILES['imagen'];
         $imagen = $img['name'];
@@ -95,12 +98,28 @@ class Kardex extends Controller
                 $imgNombre = "logo.png";
             }
             if ($id == "") {
-                $data = $this->model->insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo);
+                $data = $this->model->insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie);
                 if ($data == "ok") {
                     if (!empty($name)) {
                         move_uploaded_file($tmpName, $destino);
                     }
-                    $msg = array('msg' => 'Movimiento registrado', 'icono' => 'success');
+                    // insertar a stock 
+                    //funcion de coincidencia 
+                    $idS = 0;
+                    $stockA = 0;
+                    $data1 = $this->model->buscarConcidencia($codigoInsumo,$condicion);
+                    if($data1) {
+                        //actualizar campo ztock
+                        $idS = $data1['id'];
+                        $stockA = $data1['stock']+$cantidad;
+                        $data2 = $this->model->ActualizarStock($idS,$stockA);
+                    }else{
+                        // crear nuevo fila en stock
+                        $stockA =$cantidad;
+                        $data2 = $this->model->insertarStock($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion,$usuario_activo,$medida,$familia,$serie);
+                    }
+
+                    $msg = array('msg' => 'Movimiento registrado'.' y el stock actual es : '.$stockA, 'icono' => 'success');
                 } else if ($data == "existe") {
                     $msg = array('msg' => 'Movimiento ya existe', 'icono' => 'warning');
                 } else {

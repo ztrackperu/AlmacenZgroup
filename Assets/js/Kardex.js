@@ -109,6 +109,8 @@ $('#articulo_insumo').on('select2:select', function (e) {
             $('#codigo_insumo').append(newOption).trigger('change');
             $('#part_number').val(res.part_number);
             $('#marca').val(res.marca);
+            $('#medida').val(res.in_uvta);
+            $('#familia').val(res.tipo);
             console.log("ok");
         }
     }
@@ -129,30 +131,47 @@ function registrarLibro(e) {
     if (codigo.value == '' || articulo.value == '' || cantidad.value == '') {
         alertas('Hay campos son requeridos', 'warning');
     } else {
-        console.log("dale ok");
+        Swal.fire({
+            title: 'Esta seguro de Guardar?',
+            text: "Esta ingresando una cantidad de  : "+cantidad.value+" en el articulo con id :"+articulo.value,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log("dale ok");
         
-        const url = base_url + "Kardex/registrar";
-        const frm = document.getElementById("frmLibro");
-        const http = new XMLHttpRequest();
-        http.open("POST", url, true);
-        http.send(new FormData(frm));
-        http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                const res = JSON.parse(this.responseText);
-                //$("#nuevoLibro").modal("hide");
-                //tblLibros.ajax.reload();
-                frm.reset();
-                var newOption = new Option("", "", true, true);
-                // Append it to the select
-                $('#codigo_insumo').append(newOption).trigger('change');
-                var newOption = new Option("", "" ,true, true);
-                // Append it to the select
-                $('#articulo_insumo').append(newOption).trigger('change');
-
-                alertas(res.msg, res.icono);
-                console.log(res);
+                const url = base_url + "Kardex/registrar";
+                const frm = document.getElementById("frmLibro");
+                const http = new XMLHttpRequest();
+                http.open("POST", url, true);
+                http.send(new FormData(frm));
+                http.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        const res = JSON.parse(this.responseText);
+                        //$("#nuevoLibro").modal("hide");
+                        //tblLibros.ajax.reload();
+                        frm.reset();
+                        var newOption = new Option("", "", true, true);
+                        // Append it to the select
+                        $('#codigo_insumo').append(newOption).trigger('change');
+                        var newOption = new Option("", "" ,true, true);
+                        // Append it to the select
+                        $('#articulo_insumo').append(newOption).trigger('change');
+        
+                        alertas(res.msg, res.icono);
+                        console.log(res);
+                    }
+                }
+    
             }
-        }
+        })
+
+
+
     }
 }
 

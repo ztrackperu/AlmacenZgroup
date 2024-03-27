@@ -66,7 +66,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="cantidad">Serie </label>
-                            <input id="serie" class="form-control" type="number" name="serie" placeholder="Serie..." required>
+                            <input id="serie" class="form-control" type="text" name="serie" placeholder="Serie..." >
                         </div>
                     </div>
 

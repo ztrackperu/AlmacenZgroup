@@ -52,11 +52,11 @@ class KardexModel extends Query
         $data = $this->select($sql);
         return $data;
     }
-    public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo)
+    public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie)
     {
 
-            $query = "INSERT INTO movimientos(codigo, articulo, partNumber, marca, cantidad, condicion, extra1, imagen, user_c,user_m) VALUES (?,?,?,?,?,?,?,?,?,?)";
-            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$usuario_activo) ;
+            $query = "INSERT INTO movimientos(codigo, articulo, partNumber, marca, cantidad, condicion, extra1, imagen, user_c,user_m,medida,familia,serie) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$usuario_activo,$medida,$familia,$serie) ;
             $data = $this->save($query, $datos);
             if ($data == 1) {
                 $res = "ok";
@@ -64,6 +64,42 @@ class KardexModel extends Query
                 $res = "error";
             }
         
+        return $res;
+    }
+    public function buscarConcidencia($codigoInsumo,$condicion)
+    {
+        $sql = "SELECT id ,stock FROM stock WHERE codigo='" . $codigoInsumo . "' AND condicion ='".$condicion."'";
+        $data = $this->select($sql);
+        return $data;
+    }
+    //insertarStock($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion,$usuario_activo,$medida,$familia,$serie);
+
+    public function insertarStock($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion,$usuario_activo,$medida,$familia,$serie)
+    {
+
+            $query = "INSERT INTO stock(codigo, articulo, partNumber, marca, stock, condicion, user_c,user_m,medida,familia,serie) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion,$usuario_activo,$usuario_activo,$medida,$familia,$serie) ;
+            $data = $this->save($query, $datos);
+            if ($data == 1) {
+                $res = "ok";
+            } else {
+                $res = "error";
+            }
+        
+        return $res;
+    }
+    //ActualizarStock($idS,$stockA);
+
+    public function ActualizarStock($idS,$stockA)
+    {
+        $query = "UPDATE stock SET stock = ? WHERE id = ?";
+        $datos = array($stockA , $idS);
+        $data = $this->save($query, $datos);
+        if ($data == 1) {
+            $res = "modificado";
+        } else {
+            $res = "error";
+        }
         return $res;
     }
 
