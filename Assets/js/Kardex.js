@@ -79,6 +79,8 @@ $('.codigo_insumo').on('change', function(e) {
             $('#articulo_insumo').append(newOption).trigger('change');
             $('#part_number').val(res.part_number);
             $('#marca').val(res.marca);
+            $('#medida').val(res.in_uvta);
+            $('#familia').val(res.tipo);
             console.log("ok");
         }
     }

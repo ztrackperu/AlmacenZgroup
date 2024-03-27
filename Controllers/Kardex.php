@@ -35,7 +35,11 @@ class Kardex extends Controller
         $data =explode(',', $param);
         //var_dump($data);
         //echo $data[0];
+
         $consulta = $this->model->infoT($data[0]);
+        $cod_clase =$consulta['cod_clase'];
+        $consulta1 = $this->model->infoClase($cod_clase);
+        $consulta['tipo'] = $consulta1['C_DESITM'];
         echo json_encode($consulta, JSON_UNESCAPED_UNICODE);
         die();
 

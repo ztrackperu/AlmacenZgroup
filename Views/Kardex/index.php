@@ -49,6 +49,28 @@
                             <input id="cantidad" class="form-control" type="number" name="cantidad" placeholder="Cantidad..." required>
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="editorial">Unidad de Medida</label><br>
+                            <input id="medida" class="form-control" type="text" name="medida" placeholder="medida ..." >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="materia">Familia *</label><br>
+                            <input id="familia" class="form-control" type="text" name="familia" placeholder="Familia ..." >
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="cantidad">Serie </label>
+                            <input id="serie" class="form-control" type="number" name="serie" placeholder="Serie..." required>
+                        </div>
+                    </div>
+
+
                     <div class="col-md-12">
 
                         <div class="form-group">
@@ -57,9 +79,7 @@
                             <select id="condicion" class="form-control condicion" name="condicion" required style="width: 100%;">
                                 <option value="OPERATIVO">OPERATIVO</option>
                                 <option value="INOPERATIVO">INOPERATIVO</option>
-                                <option value="POR REVISAR">POR REVISAR</option>
-                            
-                                           
+                                <option value="POR REVISAR">POR REVISAR</option>                             
                             </select>
                         </div>
                         </div>

@@ -7,7 +7,7 @@ class KardexModel extends Query
     }
     public function getInsumos()
     {
-        $sql = "SELECT id,in_esta,ind_codi,in_arti,part_number,marca FROM data_insumos ";
+        $sql = "SELECT id,in_esta,ind_codi,in_arti,part_number,marca,in_uvta,cod_clase FROM data_insumos ";
         $res = $this->selectAll($sql);
         return $res;
 
@@ -37,6 +37,12 @@ class KardexModel extends Query
     public function infoT($valor)
     {
         $sql = "SELECT * FROM data_insumos WHERE id=" . $valor . "";
+        $data = $this->select($sql);
+        return $data;
+    }
+    public function infoClase($valor)
+    {
+        $sql = "SELECT * FROM dtable WHERE C_NUMITM=" . $valor . "";
         $data = $this->select($sql);
         return $data;
     }
