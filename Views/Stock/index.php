@@ -76,14 +76,9 @@
                         <div class="col-md-12">
                             
                             <div class="form-group">
-                                <label for="codigo">Código 2023</label>
-                                <input type="hidden" id="id" name="id">
+                                <label for="codigo">Descripcion Articulo</label>
 
-                                <input id="codigo_receta" class="form-control" type="text" name="codigo_receta" required placeholder="Código de Receta">
-                                <label for="nombre">Nombre</label>
-                                <input id="nombre_receta" class="form-control" type="text" name="nombre_receta" required placeholder="Nombre de Receta">
-                                <label for="descripcion">Descripción</label>
-                                <input id="descripcion_receta" class="form-control" type="text" name="descripcion_receta" required placeholder="Descripcion de Receta">
+                                <input id="descripcion_articulo" class="form-control" type="text" name="descripcion_articulo" required placeholder="Nuevo articulo ...">
 
 
                             </div>

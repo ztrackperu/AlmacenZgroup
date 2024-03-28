@@ -35,25 +35,25 @@ class StockModel extends Query
         $res = $this->select($sql);
         return $res;
     }
-
-    public function insertarReceta($codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo)
+    public function ultimoCodigo()
     {
-        $verificar = "SELECT * FROM receta WHERE nombre_receta = '$nombre_receta' AND estado=1";
-        $existe = $this->select($verificar);
-        // si no existe 
-        if (empty($existe)) {
-            $query = "INSERT INTO receta(codigo_receta,nombre_receta,descripcion,user_c,user_m) VALUES (?,?,?,?,?)";
-            $datos = array($codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo,$usuario_activo);
+        $sql = "SELECT id FROM data_insumos order by desc limit 1";
+        $res = $this->select($sql);
+        return $res;
+    }
+
+    public function insertarArticulo($codigo,$descripcion_articulo,$usuario_activo){
+        // pedir ultimo 
+
+            $query = "INSERT INTO data_insumos(ind_codi ,in_arti,user_c,user_m) VALUES (?,?,?,?)";
+            $datos = array($codigo,$descripcion_articulo,$usuario_activo,$usuario_activo);
             $data = $this->save($query, $datos);
             if ($data == 1) {
                 $res = "ok";
             } else {
                 $res = "error";
             }
-        } else {
-            // si existe informacion 
-            $res = "existe";
-        }
+        
         return $res;
     }
 

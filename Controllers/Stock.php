@@ -52,48 +52,29 @@ class Stock extends Controller
 
     public function registrar()
     {
-        $codigo_receta = strClean($_POST['codigo_receta']); 
-        $nombre_receta = strClean($_POST['nombre_receta']);
-        $descripcion_receta = strClean($_POST['descripcion_receta']);
+        $descripcion_articulo = strClean($_POST['descripcion_articulo']); 
         $usuario_activo = $_SESSION['id_usuario'];
-        $id = strClean($_POST['id']);
-        if (empty($nombre_receta)) {
-            $msg = array('msg' => 'El nombre de Receta es requerido', 'icono' => 'warning');
+        $id="";
+        if (empty($descripcion_articulo)) {
+            $msg = array('msg' => 'El nombre del Articulo es requerido', 'icono' => 'warning');
         } else {
             if ($id == "") {
                 //se guarda si id es vacio 
-                $data = $this->model->insertarReceta($codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo);
+                $data1 = $this->model->ultimoCodigo();
+                $cod = $data1['id']+1;
+                $data = $this->model->insertarArticulo($cod,$descripcion_articulo,$usuario_activo);
                 if ($data == "ok") {
                     // guardar los datos en el historico de receta
                     $evento="CREADO";
                     //consultar el id que acabamos de crear
-                    $id_consulta = $this->model->IdReceta($nombre_receta);
-                    $id=$id_consulta['id'];
                     // insertamos el evento en tabla historica
-                    $data2 = $this->model->h_receta($id,$codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo,$evento );
-                    $msg = array('msg' => 'Receta registrada', 'icono' => 'success');
+                    $msg = array('msg' => 'Articulo registrada', 'icono' => 'success');
                 } else if ($data == "existe") {
-                    $msg = array('msg' => 'La Receta ya existe', 'icono' => 'warning');
+                    $msg = array('msg' => 'El articulo ya existe', 'icono' => 'warning');
                 } else {
                     $msg = array('msg' => 'Error al registrar', 'icono' => 'error');
                 }
-            } else {
-                // se actualiza si id tiene informacion
-                $data = $this->model->actualizarReceta($codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo, $id);
-                if ($data == "modificado") {
-                    // guardar los datos en el historico de receta}
-                    $evento="MODIFICADO";
-                    $data2 = $this->model->h_receta($id,$codigo_receta,$nombre_receta,$descripcion_receta,$usuario_activo,$evento );
-                    $msg = array('msg' => 'Receta modificado', 'icono' => 'success');
-                } else if($data==2){
-                    $msg = array('msg' => 'ya existe una receta con ese nombre', 'icono' => 'error');
-
-                }
-                
-                else {
-                    $msg = array('msg' => 'Error al modificar', 'icono' => 'error');
-                }
-            }
+            } 
         }
         echo json_encode($msg, JSON_UNESCAPED_UNICODE);
         die();

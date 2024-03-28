@@ -155,11 +155,11 @@ function btnEliminarReceta(id) {
 
 function registrarReceta(e) {
     e.preventDefault();
-    const nombre_receta = document.getElementById("nombre_receta");
+    const nombre_receta = document.getElementById("descripcion_articulo");
     if (nombre_receta.value == "") {
-        alertas('El Nombre de la Receta es requerida', 'warning');
+        alertas('El Nombre de la Articulo es requerido', 'warning');
     } else {
-        const url = base_url + "Recetas/registrar";
+        const url = base_url + "Stock/registrar";
         const frm = document.getElementById("frmRecetas");
         const http = new XMLHttpRequest();
         http.open("POST", url, true);
@@ -259,10 +259,10 @@ function enviarDatosAlServidor(datos) {
 }
 
 function frmRecetas() {
-    document.getElementById("title").textContent = "Nueva Receta";
+    document.getElementById("title").textContent = "Nuevo Articulo";
     document.getElementById("btnAccion").textContent = "Registrar";
     document.getElementById("frmRecetas").reset();
-    document.getElementById("id").value = "";
+    //document.getElementById("id").value = "";
     $("#nuevoReceta").modal("show");
 }
 
