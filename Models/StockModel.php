@@ -37,7 +37,7 @@ class StockModel extends Query
     }
     public function ultimoCodigo()
     {
-        $sql = "SELECT id FROM data_insumos order by desc limit 1";
+        $sql = "SELECT id  FROM data_insumos order by id desc limit 1";
         $res = $this->select($sql);
         return $res;
     }
