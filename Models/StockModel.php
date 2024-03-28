@@ -46,7 +46,7 @@ class StockModel extends Query
         // pedir ultimo 
 
             $query = "INSERT INTO data_insumos(ind_codi ,in_arti,IN_OPER) VALUES (?,?,?)";
-            $datos = array($codigo,$descripcion_articulo,$usuario_activo);
+            $datos = array($descripcion_articulo,$descripcion_articulo,$usuario_activo);
             $data = $this->save($query, $datos);
             if ($data == 1) {
                 $res = "ok";
