@@ -76,7 +76,7 @@
                         <div class="col-md-12">
                             
                             <div class="form-group">
-                                <label for="codigo">Código</label>
+                                <label for="codigo">Código 2023</label>
                                 <input type="hidden" id="id" name="id">
 
                                 <input id="codigo_receta" class="form-control" type="text" name="codigo_receta" required placeholder="Código de Receta">
