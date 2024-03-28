@@ -96,6 +96,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 'data':'cantidad'
             },
             {
+                'data':'extra2'
+            },
+            {
                 'data':'extra1'
             },
             {

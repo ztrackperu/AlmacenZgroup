@@ -52,11 +52,11 @@ class KardexModel extends Query
         $data = $this->select($sql);
         return $data;
     }
-    public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie)
+    public function insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie,$ubicacion)
     {
 
-            $query = "INSERT INTO movimientos(codigo, articulo, partNumber, marca, cantidad, condicion, extra1, imagen, user_c,user_m,medida,familia,serie) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$usuario_activo,$medida,$familia,$serie) ;
+            $query = "INSERT INTO movimientos(codigo, articulo, partNumber, marca, cantidad, condicion, extra1, imagen, user_c,user_m,medida,familia,serie,extra2) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $datos = array($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$usuario_activo,$medida,$familia,$serie,$ubicacion) ;
             $data = $this->save($query, $datos);
             if ($data == 1) {
                 $res = "ok";

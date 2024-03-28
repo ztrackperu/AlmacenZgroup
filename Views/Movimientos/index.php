@@ -51,6 +51,7 @@
                                 <th>Familia</th>
                                 <th>Condición</th>
                                 <th>Cantidad</th>
+                                <th>Ubicacion</th>
                                 <th>Comentarios</th>
                                 <th>Usuario</th>
                                 <th>Fecha</th>

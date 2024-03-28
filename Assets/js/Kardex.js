@@ -117,6 +117,13 @@ $('#articulo_insumo').on('select2:select', function (e) {
     
 
 });
+function deleteImg() {
+    document.getElementById("icon-cerrar").innerHTML = '';
+    document.getElementById("icon-image").classList.remove("d-none");
+    document.getElementById("img-preview").src = '';
+    document.getElementById("imagen").value = '';
+    document.getElementById("foto_actual").value = '';
+}
 
 function registrarLibro(e) {
     e.preventDefault();
@@ -161,7 +168,7 @@ function registrarLibro(e) {
                         var newOption = new Option("", "" ,true, true);
                         // Append it to the select
                         $('#articulo_insumo').append(newOption).trigger('change');
-        
+                        deleteImg();
                         alertas(res.msg, res.icono);
                         console.log(res);
                     }

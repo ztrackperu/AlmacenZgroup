@@ -84,6 +84,13 @@
                         </div>
                         </div>
 
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="cantidad">Ubicacion :  </label>
+                            <input id="ubicacion" class="form-control" type="text" name="ubicacion" placeholder="Ubicacion..." required>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="form-group">

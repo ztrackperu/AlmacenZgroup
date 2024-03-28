@@ -69,6 +69,8 @@ class Kardex extends Controller
         $medida = strClean($_POST['medida']);
         $familia = strClean($_POST['familia']);
         $serie = strClean($_POST['serie']);
+        $ubicacion = strClean($_POST['ubicacion']);
+
         //$imagen = strClean($_POST['imagen']);
         $img = $_FILES['imagen'];
         $imagen = $img['name'];
@@ -98,7 +100,7 @@ class Kardex extends Controller
                 $imgNombre = "logo.png";
             }
             if ($id == "") {
-                $data = $this->model->insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie);
+                $data = $this->model->insertarInsumo($codigoInsumo, $nombreInsumo, $partNumber, $marca, $cantidad, $condicion, $descripcion, $imgNombre,$usuario_activo,$medida,$familia,$serie,$ubicacion);
                 if ($data == "ok") {
                     if (!empty($name)) {
                         move_uploaded_file($tmpName, $destino);
