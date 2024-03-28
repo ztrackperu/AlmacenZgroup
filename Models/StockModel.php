@@ -45,8 +45,8 @@ class StockModel extends Query
     public function insertarArticulo($codigo,$descripcion_articulo,$usuario_activo){
         // pedir ultimo 
 
-            $query = "INSERT INTO data_insumos(ind_codi ,in_arti,user_c,user_m) VALUES (?,?,?,?)";
-            $datos = array($codigo,$descripcion_articulo,$usuario_activo,$usuario_activo);
+            $query = "INSERT INTO data_insumos(ind_codi ,in_arti,IN_OPER) VALUES (?,?,?)";
+            $datos = array($codigo,$descripcion_articulo,$usuario_activo);
             $data = $this->save($query, $datos);
             if ($data == 1) {
                 $res = "ok";
