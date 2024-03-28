@@ -169,7 +169,7 @@ function registrarReceta(e) {
                 const res = JSON.parse(this.responseText);
                 $("#nuevoReceta").modal("hide");
                 frm.reset();
-                tblRecetas.ajax.reload();
+                //tblRecetas.ajax.reload();
                 alertas(res.msg, res.icono);
             }
         }
