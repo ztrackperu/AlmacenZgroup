@@ -10,25 +10,14 @@
 <div class="row">
     <div class="col-md-6">
         <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-primary mb-2" type="button" onclick="frmRecetas()"><i class="fa fa-plus"></i>
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-primary mb-2" type="button" onclick="descargarPlantillaExcel()">Descargar Plantilla</i>
-            </div>
+
+
         </div>
     </div>
   
         <div class="col-md-6" style="display: flex;">
 
-            <div class="col-md-6">
-                <input type="file" id="fileInput" class="custom-file-input" accept=".csv, .xlsx" onchange="actualizarNombreArchivo(this)">
-                <label for="fileInput" class="custom-file-label" id="nombreArchivoLabel">Seleccionar Archivo</label>
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-primary mb-2" type="button" onclick="cargarArchivo()">Carga Masiva</i>
-            </div>
+
         </div>
 
 </div>
